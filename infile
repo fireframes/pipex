@@ -9,7 +9,7 @@ LIBS = $(LIBFT)
 
 SRCS_DIR = ./src/
 
-SRCS =	$(SRCS_DIR)pipex.c $(SRCS_DIR)get_path.c		
+SRCS =	$(SRCS_DIR)pipex.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -28,10 +28,10 @@ clean:
 	@echo "Cleaning object files..."
 	rm -rf $(OBJS)
 
-fclean: clean
+a1fclean: clean
 	@echo "\nPerforming full clean..."
 	rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+a1.PHONY: all, clean, fclean, re

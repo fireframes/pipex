@@ -1,0 +1,13 @@
+/*
+
+2. if == -1 / perror / exit block can be wrapped in a function (if f_check -> return .. in main)
+
+3. Just passing a splitted array of args would do the job
+DONE
+
+4. if outfile exists. rewrite! (this is shell mechanism) 
+DONE: fixed with O_TRUNC parameter in open function.
+
+5. Check if everything is closed correctly and all dups are doing proper job
+
+*/

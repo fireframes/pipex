@@ -6,13 +6,13 @@
 /*   By: mmaksimo <mmaksimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:34:32 by mmaksimo          #+#    #+#             */
-/*   Updated: 2024/06/12 22:40:06 by mmaksimo         ###   ########.fr       */
+/*   Updated: 2024/06/14 18:25:40 by mmaksimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	free_split(char **split, char *cmd_path)
+void	free_split(char **split)
 {
 	int	i;
 
@@ -23,17 +23,15 @@ void	free_split(char **split, char *cmd_path)
 		i++;
 	}
 	free(split);
-	if (cmd_path)
-		free(cmd_path);
 }
 
-int	error_check(int ret_val, const char *err_msg, void *close_fd)
+int	error_check(int ret_val, const char *err_msg, int close_fd)
 {
 	if (ret_val == -1)
 	{
 		perror(err_msg);
-		if (*(int*)close_fd)
-			close(*(int*)close_fd);
+		if (close_fd)
+			close(close_fd);
 		// free_split(bin_path, NULL); // Use struct to free everything
 		// free_split(cmd_argv, NULL);
 		exit(EXIT_FAILURE);

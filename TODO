@@ -12,10 +12,12 @@ DONE: fixed with O_TRUNC parameter in open function.
 
 5. handle non-existent command
 
-6. error status as in shell
+6. error status as in shell ?
 
 7. IMPORTANT! we need a struct to perform all free and etc
 
-8. Check for empty strings ?
+8. Check for empty strings ? (zsh: permission denied: /usr/bin/)
+
+9. numbers from 1 - 9 are treated as dir entries by 'cd' command by zsh
 
 */

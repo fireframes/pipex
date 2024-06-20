@@ -10,7 +10,7 @@ LIBS = $(LIBFT) $(LIBFTPRINTF)
 
 SRCS_DIR= ./src/
 SRCS = $(SRCS_DIR)pipex.c \
-		$(SRCS_DIR)get_path.c \
+		$(SRCS_DIR)get_cmdargs.c \
 		$(SRCS_DIR)pipex_utils.c
 
 OBJS = ${SRCS:.c=.o}

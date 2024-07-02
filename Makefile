@@ -1,6 +1,6 @@
 NAME = pipex
 
-CFLAGS = -Wextra -Wall -Werror -g
+CFLAGS = -Wextra -Wall -Werror
 
 HEADERS = -Iinclude
 

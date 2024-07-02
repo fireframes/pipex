@@ -6,7 +6,7 @@
 /*   By: mmaksimo <mmaksimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 23:15:38 by mmaksimo          #+#    #+#             */
-/*   Updated: 2024/06/18 23:26:09 by mmaksimo         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:04:37 by mmaksimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ typedef struct s_cmdargs
 t_cmdargs	get_cmdargs(char *argv, char **envp);
 char		**get_binpath(char **envp);
 char		*get_cmdpath(char **cmd_argv, char **bin_path);
-void		free_split(char **split);
 int			error_check(int ret_val, const char *err_msg, int close_fd);
+void		free_split(char **split);
 void		init_check(int argc, char **argv);
+void		close_fpids(t_fpids fp_id, int n);
 
 #endif

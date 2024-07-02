@@ -6,7 +6,7 @@
 /*   By: mmaksimo <mmaksimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:18:05 by mmaksimo          #+#    #+#             */
-/*   Updated: 2024/06/18 23:17:08 by mmaksimo         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:00:33 by mmaksimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,12 @@ static void	child_process(char *argv, char **envp, t_fpids fp_id, int child_id)
 	cmdargs = get_cmdargs(argv, envp);
 	if (cmdargs.exit_status == 1)
 	{
-		close(fp_id.pipefd[n]);
-		close(fp_id.pipefd[1 - n]);
-		close(fp_id.file[n]);
-		close(fp_id.file[1 - n]);
+		close_fpids(fp_id, n);
 		exit(EXIT_FAILURE);
 	}
 	error_check(dup2(fp_id.file[n], n), "dup2", fp_id.file[n]);
 	error_check(dup2(fp_id.pipefd[1 - n], 1 - n), "dup2", fp_id.pipefd[1 - n]);
-	close(fp_id.pipefd[n]);
-	close(fp_id.pipefd[1 - n]);
-	close(fp_id.file[n]);
-	close(fp_id.file[1 - n]);
+	close_fpids(fp_id, n);
 	error_check(execve(cmdargs.cmd_path, cmdargs.cmd_argv, envp), "execve", 0);
 }
 

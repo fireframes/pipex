@@ -6,11 +6,23 @@
 /*   By: mmaksimo <mmaksimo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:34:32 by mmaksimo          #+#    #+#             */
-/*   Updated: 2024/06/18 23:17:26 by mmaksimo         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:02:13 by mmaksimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+int	error_check(int ret_val, const char *err_msg, int close_fd)
+{
+	if (ret_val == -1)
+	{
+		perror(err_msg);
+		if (close_fd > 0)
+			close(close_fd);
+		exit(EXIT_FAILURE);
+	}
+	return (0);
+}
 
 void	free_split(char **split)
 {
@@ -23,18 +35,6 @@ void	free_split(char **split)
 		i++;
 	}
 	free(split);
-}
-
-int	error_check(int ret_val, const char *err_msg, int close_fd)
-{
-	if (ret_val == -1)
-	{
-		perror(err_msg);
-		if (close_fd > 0)
-			close(close_fd);
-		exit(EXIT_FAILURE);
-	}
-	return (0);
 }
 
 void	init_check(int argc, char **argv)
@@ -52,4 +52,12 @@ void	init_check(int argc, char **argv)
 			ft_printf("cmd2 was not provided\n");
 		exit(EXIT_FAILURE);
 	}
+}
+
+void	close_fpids(t_fpids fp_id, int n)
+{
+	close(fp_id.pipefd[n]);
+	close(fp_id.pipefd[1 - n]);
+	close(fp_id.file[n]);
+	close(fp_id.file[1 - n]);
 }
